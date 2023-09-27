@@ -65,16 +65,17 @@ ninja -C build install
 #Done
 #------------------------------------------
 
-# Test
+
 # Disable Clear Linux graphical login service
-systemctl set-default multi-user.target # Not always required depending on your install
+# Not always required depending on your install
+systemctl set-default multi-user.target
 
 # Create an .xinitrc file and paste these lines.
 # nvidia path optional but wont hurt to leave as is.
 export LD_LIBRARY_PATH=/opt/nvidia/lib:/usr/local/lib64:/usr/local/lib
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 
-## Privileged user stuff - uncomment if need be.
+# Privileged user stuff - uncomment if need be.
 # networkctl reload ## For some reason network state may stay degraded and this fixes that.
 # echo "-1" > /proc/sys/kernel/sched_rt_runtime_us # -- If running jackd with realtime.
 # modprobe snd_seq # if running midi apps like lmms or rakarrack this helps.
@@ -93,7 +94,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 # export XDG_RUNTIME_DIR=
 # export XDG_DATA_DIRS=
 
-# Reboot then once at command prompt run:
+# Logout or reboot if needed then once at command prompt run:
 startx
 
 # Optional Autologin
