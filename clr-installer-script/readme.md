@@ -1,8 +1,8 @@
 #  Unofficial CL Installer
 ### 
 ### 
-### This is small shell script I made to create a Clear Linux installation on a separate sdd drive or use simply as an ISO with libvirtd,
-### As the default GUI installer is sometimes buggy and no clear XFS option.
+### This is small shell script I made to create a Clear Linux installation on a separate sdd drive or to use as an ISO with libvirtd,
+### As the default GUI installer is sometimes buggy and no XFS filesystem option.
 ### Once installation is complete use gparted to manually resize the new SDD partition to full capacity if desired ( practical for desktop environments ),
 ### Then use the BIOS UEFI boot menu to boot.
 ### Don't forget to update your password.
