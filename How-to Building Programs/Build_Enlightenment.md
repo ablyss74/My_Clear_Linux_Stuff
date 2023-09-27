@@ -23,7 +23,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 # -Dopengl=full is recommended if using nvidia driver. 
 # meson . build -Dopengl=full -Decore-imf-loaders-disabler="scim,ibus"
 
-# 
+ 
 # If building with Scim 
 # First download it, build/intall
 
@@ -44,13 +44,13 @@ ninja -C build install
 cd enlightenment-git
 export LD_LIBRARY_PATH=/opt/nvidia/lib:/usr/local/lib64:/usr/local/lib 
 
-## <!-- ******* Important Hackery  *******
+#******* Important Hackery  *******
 
 ## Make sure this path is correct otherwise enlightenment will not build
-## Change $HOME/Dev to the correct path though
+## Change $HOME/Dev to the correct path though as I keep on my builds in $HOME/Dev
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${HOME}/Dev/efl-git/build/meson-private/
 
-## ******* Important Hackery  ******* -->
+# ******* /Important Hackery  ******* 
 
 meson . build
 ninja -C build
@@ -70,6 +70,7 @@ ninja -C build install
 systemctl set-default multi-user.target # Not always required depending on your install
 
 # Create an .xinitrc file and paste these lines.
+# nvidia path optional but wont hurt to leave as is.
 export LD_LIBRARY_PATH=/opt/nvidia/lib:/usr/local/lib64:/usr/local/lib
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 
@@ -96,7 +97,6 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 startx
 
 # Optional Autologin
-#
 systemctl edit getty@tty1.service
 
 # Then add the following replacing myusername with your login name
