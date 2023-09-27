@@ -1,0 +1,3 @@
+This is a script to install nvidia on clear linux os.  Run with bash ./Install_Nvidia
+
+Some code snippets were used from https://docs.01.org/clearlinux/latest/tutorials/nvidia.html
