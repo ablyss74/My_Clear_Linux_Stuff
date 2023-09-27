@@ -75,7 +75,7 @@ echo -e "\\n\\n\\n\\n\\n$echoReply "
 
 main() {
 clear
-echo -e "                   UnOfficial CL Installer                 \n             https://github.com/ablyss74/scripts           \n                     Help:[quit/restart]          \n   \
+echo -e "                   UnOfficial CL Installer                 \n             https://github.com/ablyss74           \n                     Help:[quit/restart]          \n   \
         \n       \n     \n   \n \n"
 footer	
 }
