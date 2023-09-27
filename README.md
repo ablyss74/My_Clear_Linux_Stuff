@@ -3,4 +3,3 @@
 ### The builds and most recommendations that I offer have been tested on a Intel Xeon E5-2630,
 ### And for those running nvidia drivers I have tested with GTX 1070 and RTX 2060 SUPER 
 
-### See the Directory [./archive](./archive) for a list.
