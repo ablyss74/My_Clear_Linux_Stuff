@@ -71,7 +71,7 @@ systemctl set-default multi-user.target # Not always required depending on your 
 
 # Create an .xinitrc file and paste these lines.
 export LD_LIBRARY_PATH=/opt/nvidia/lib:/usr/local/lib64:/usr/local/lib
-export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${HOME}/Dev/efl-git/build/meson-private/
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 # XDG env variables may need to be manually set.
 # If that's the case export them too
 # Inlucded examples may not be the same for your system.
