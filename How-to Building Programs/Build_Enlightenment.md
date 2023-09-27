@@ -72,6 +72,11 @@ systemctl set-default multi-user.target # Not always required depending on your 
 # Create an .xinitrc file and paste these lines.
 export LD_LIBRARY_PATH=/opt/nvidia/lib:/usr/local/lib64:/usr/local/lib
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
+
+# networkctl reload ## For some reason network state may stay degraded and this fixes that.  - needs privileged user. 
+# echo "-1" > /proc/sys/kernel/sched_rt_runtime_us # -- If running jackd with realtime. - needs privileged user.
+# modprobe snd_seq # if running midi apps like lmms or rakarrack this helps - needs priviledged user.
+
 # XDG env variables may need to be manually set.
 # If that's the case export them too
 # Inlucded examples may not be the same for your system.
