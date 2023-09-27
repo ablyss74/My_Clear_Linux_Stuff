@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This is basically a startup script I use for starting my docker container in Clear Linux for running container apps
-# Masking the service I find helps speed up bootup procress.
+# Masking the service I find helps speed up the boot procress.
 # change docker_id to match your container id. 
 
 
