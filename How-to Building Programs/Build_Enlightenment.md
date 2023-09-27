@@ -108,8 +108,6 @@ Type=idle
 
 # Last thing...
 # Create or edit the file $HOME/.profile and add the following startup script.
-
-# Test 
 # Sleep 1s is needed on my machine. W/ out it the dual monitor support doesn't register. :\ strange I know
 [[ ! $(ps -A | grep enlightenment) ]] && sleep 1s && startx
 
