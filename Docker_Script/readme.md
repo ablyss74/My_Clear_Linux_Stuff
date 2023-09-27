@@ -22,7 +22,7 @@ bash /root/Downloads/NVIDIA-Linux-x86_64-525.60.11.run --accept-license --ui=non
 # docker ps
 # Get the 1st docker ID and `docker commit ID ubuntu`
 
-# Create a startup scrip with xterm, gnome-terminal, konsole, or terminology.
+# Create a startup script with xterm, gnome-terminal, konsole, or terminology.
 ```
 ```bash
 #!/bin/bash
