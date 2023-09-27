@@ -2,7 +2,7 @@
 # This enables jackd and pulseaudio to work together
 # While also keeping the original pulseaudio to fall back on.
 
-# Requires jackd to be already installed unless using jackd in a container and the necessary building tools/libs.
+# Requires the necessary building tools/libs, and jackd to be already installed unless using jackd in a container. 
 
 
 git clone git://anongit.freedesktop.org/pulseaudio/pulseaudio pulse-git
