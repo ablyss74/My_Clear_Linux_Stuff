@@ -16,7 +16,7 @@ xhost local:${USER} && docker run -it --privileged -v ${HOME}:/root -e JACK_NO_A
 
 # Optional Load Nvidia Driver
 # You don't really need the nvidia driver unless running apps like obs that could make use of it.
-#  Ideally you'd already have the driver downloaded on the host machine so you just navitage to /root/Download folder, then at command prompt:
+# Ideally you'd already have the driver downloaded on the host machine so you just navitage to /root/Download folder, then at command prompt:
 bash /root/Downloads/NVIDIA-Linux-x86_64-525.60.11.run --accept-license --ui=none --no-kernel-module --no-questions
 # Then save the docker so you don't have to load nvidia driver every time
 # docker ps
