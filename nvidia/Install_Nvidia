@@ -59,11 +59,24 @@ systemctl add-wants update-triggers.target fix-nvidia-libGL-trigger.service
 
 swupd bundle-add kernel-native-dkms
 
+echo "Updating kernel entry to disable nouveau, nvidiafb."
+[[ -e /etc/kernel/cmdline.d/module.sig_unenforce.conf ]] && mv -v /etc/kernel/cmdline-removal.d/module.sig_unenforce.conf /etc/kernel/cmdline.d/ || echo "module.sig_unenforce" > /etc/kernel/cmdline.d/module.sig_unenforce.conf 
+
+
 echo "Updating kernel entry to disable signatures enforcement."
-[[ -e /etc/kernel/cmdline-removal.d/module.sig_unenforce.conf ]] && mv -v /etc/kernel/cmdline-removal.d/module.sig_unenforce.conf /etc/kernel/cmdline.d/ || echo "module.sig_unenforce" > /etc/kernel/cmdline.d/module.sig_unenforce.conf 
+[[ ! -e /etc/kernel/cmdline.d/blacklist-nouveau.conf ]] && echo "modprobe.blacklist=nouveau,nvidiafb" > /etc/kernel/cmdline.d/blacklist-nouveau.conf
 
 echo "updating kernel entry to disable intel-iommu=igfx_off..."
-[[ -e /etc/kernel/cmdline.d/intel-iommu.conf ]] && mv -v /etc/kernel/cmdline.d/intel-iommu.conf /etc/kernel/cmdline-removal.d/ || echo "intel_iommu=igfx_off" > /etc/kernel/cmdline-removal.d/intel-iommu.conf
+[[ ! -e /etc/kernel/cmdline-removal.d/intel-iommu.conf ]] && echo "intel_iommu=igfx_off" > /etc/kernel/cmdline-removal.d/intel-iommu.conf
+
+echo "updating kernel entry to enable nvidia_drm ..."
+[[ ! -e /etc/kernel/cmdline.d/nvidia-drm.conf ]] && echo "nvidia_drm.modeset=1" > /etc/kernel/cmdline.d/nvidia-drm.conf 
+
+echo "updating /etc/modprobe to load nvidia_uvm ..."
+[[ ! -e /etc/modprobe.d/ ]] && mkdir /etc/modprobe.d
+[[ ! -e /etc/modprobe.d/nvidia-uvm.conf ]] && echo "softdep nvidia post: nvidia_uvm" > /etc/modprobe.d/nvidia-uvm.conf
+
+
 clr-boot-manager update
 
 mkdir /etc/modprobe.d
@@ -140,17 +153,22 @@ echo "updating kernel entry to accept intel-iommu=igfx_off..."
 [[ -e /etc/kernel/cmdline-removal.d/intel-iommu.conf ]] && mv -v /etc/kernel/cmdline-removal.d/intel-iommu.conf /etc/kernel/cmdline.d/ || echo "intel_iommu=igfx_off" /etc/kernel/cmdline.d/intel_iommu.conf
 
 echo "Removing files..."
-rm -v /etc/systemd/system/fix-nvidia-libGL-trigger.service
-rm -v /etc/systemd/system/update-triggers.target.wants/fix-nvidia-libGL-trigger.service
+[[ -e /etc/systemd/system/fix-nvidia-libGL-trigger.service ]] && rm -v /etc/systemd/system/fix-nvidia-libGL-trigger.service
+[[ -e /etc/systemd/system/update-triggers.target.wants/fix-nvidia-libGL-trigger.service ]] && rm -v /etc/systemd/system/update-triggers.target.wants/fix-nvidia-libGL-trigger.service
 systemctl daemon-reload
-rm -v /etc/modprobe.d/disable-nouveau.conf
+[[ -e /etc/modprobe.d/disable-nouveau.conf ]] && rm -v /etc/modprobe.d/disable-nouveau.conf
+[[ -e /etc/modprobe.d/nvidia-uvm.conf ]] && rm -v /etc/modprobe.d/nvidia-uvm.conf
 rm -v /etc/ld.so.conf.d/nvidia.conf
 ldconfig
 sed -i '/^include \/etc\/ld\.so\.conf\.d\/\*\.conf$/d' /etc/ld.so.conf
-rm -v /etc/X11/xorg.conf.d/nvidia-files-opt.conf
+[[ -e etc/X11/xorg.conf.d/nvidia-files-opt.conf ]] && rm -v /etc/X11/xorg.conf.d/nvidia-files-opt.conf
+[[ -e /etc/X11/xorg.conf.d/nvidia-drm-outputclass.conf ]] && rm -v /etc/X11/xorg.conf.d/nvidia-drm-outputclass.conf  
+[[ -e /etc/X11/xorg.conf.d/nvidia-modules.conf ]] && rm -v /etc/X11/xorg.conf.d/nvidia-modules.conf
 clr-boot-manager update
 clear
-/opt/nvidia/bin/nvidia-uninstall
+[[ -e /opt/nvidia/bin/nvidia-uninstall ]] && /opt/nvidia/bin/nvidia-uninstall
+[[ -e /usr/bin/nvidia-uninstall ]] && /usr/bin/nvidia-uninstall
+[[ -e /usr/local/bin/nvidia-uninstall ]] && /usr/local/bin/nvidia-uninstall
 echo "Remove done.  Reboot."
 		      	break 
 		  		      	
