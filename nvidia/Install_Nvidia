@@ -41,7 +41,7 @@ clear
 echo "Starting Pre_install..."
 echo ""
 mkdir -p /etc/kernel/cmdline-removal.d/
-echo "intel_iommu=igfx_off" | tee /etc/kernel/cmdline-removal.d/intel-iommu.conf
+mkdir -p /etc/modprobe.d/
 ##
 tee /etc/systemd/system/fix-nvidia-libGL-trigger.service > /dev/null <<'EOF'
 [Unit]
@@ -62,7 +62,6 @@ swupd bundle-add kernel-native-dkms
 echo "Updating kernel entry to disable nouveau, nvidiafb."
 [[ -e /etc/kernel/cmdline.d/module.sig_unenforce.conf ]] && mv -v /etc/kernel/cmdline-removal.d/module.sig_unenforce.conf /etc/kernel/cmdline.d/ || echo "module.sig_unenforce" > /etc/kernel/cmdline.d/module.sig_unenforce.conf 
 
-
 echo "Updating kernel entry to disable signatures enforcement."
 [[ ! -e /etc/kernel/cmdline.d/blacklist-nouveau.conf ]] && echo "modprobe.blacklist=nouveau,nvidiafb" > /etc/kernel/cmdline.d/blacklist-nouveau.conf
 
@@ -79,9 +78,6 @@ echo "updating /etc/modprobe to load nvidia_uvm ..."
 
 clr-boot-manager update
 
-mkdir /etc/modprobe.d
-
-printf "blacklist nouveau \noptions nouveau modeset=0 \nblacklist nvidiafb\n" | tee --append /etc/modprobe.d/disable-nouveau.conf
 
 echo "include /etc/ld.so.conf.d/*.conf" |  tee --append /etc/ld.so.conf
 [[ ! -e /etc/ld.so.conf.d ]] && mkdir /etc/ld.so.conf.d
