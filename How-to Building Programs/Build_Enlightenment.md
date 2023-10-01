@@ -112,5 +112,5 @@ Type=idle
 [[ ! $(ps -A | grep enlightenment) ]] && sleep 1s && startx
 
 ### Privileged user stuff - uncomment if need be.
-#[[ ! $(ps -A | grep enlightenment) ]] && sleep 1s &&  sudo -u $(whomai) startx
+#[[ ! $(ps -A | grep enlightenment) ]] && sleep 1s &&  sudo -u $(whoami) startx
 ```
