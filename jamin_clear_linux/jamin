@@ -1,3 +1,0 @@
-#!/bin/bash
-export LD_PRELOAD=./app/lib/liblo.so.7
-./app/bin/jamin -f ./app/share/jamin/examples/default.jam
