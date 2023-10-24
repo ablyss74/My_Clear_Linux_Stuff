@@ -1,4 +1,4 @@
-### The below docker scripts are for running GUI apps from the container on the host via xhost forwarding. Apps like OBS can run from the container on Clear Linux with Nvidia driver support, and obsolete apps like Jamin can run with jackd/pulseaudio modules.
+### The below docker scripts are for running Ubuntu GUI apps from the container on the Clear Linux host via xhost forwarding. Apps like OBS can run from the container on Clear Linux with Nvidia driver support, and obsolete apps like Jamin can run with jackd/pulseaudio modules. 
 
 
  1. Add the docker container bundle with sudo swupd bundle-add containers-basic
