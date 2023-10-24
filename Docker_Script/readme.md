@@ -2,7 +2,8 @@
 
 
  1. Add the docker container bundle with sudo swupd bundle-add containers-basic
- 2. If planning on running jackd and qjackctl via containter, set Realtime mode to -1 with  echo "-1" > /proc/sys/kernel/sched_rt_runtime_us prior to running jackd and qjackctl
+ 2. If planning on running jackd and qjackctl via containter, set Realtime mode to -1 with
+    ```bash echo "-1" > /proc/sys/kernel/sched_rt_runtime_us prior to running jackd and qjackctl```
  3. $HOME will be mirrored to the docker /root directory.
  
 ```bash 
