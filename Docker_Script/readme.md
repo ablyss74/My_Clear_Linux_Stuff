@@ -22,6 +22,7 @@ bash /root/Downloads/NVIDIA-Linux-x86_64-525.60.11.run --accept-license --ui=non
 # Then save the docker so you don't have to load nvidia driver every time
 # docker ps
 # Get the 1st docker ID and `docker commit ID ubuntu`
+# Should look something like this: docker commit 8409718f6112 ubuntu
 
 # Create a startup script with xterm, gnome-terminal, konsole, or terminology.
 ```
