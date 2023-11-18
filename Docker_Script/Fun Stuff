@@ -1,0 +1,4 @@
+### Run a docker within a docker
+#
+# docker pull clearlinux
+xhost +local:${USER} && xterm -e docker run -it --privileged -v /var/run/docker.sock:/var/run/docker.sock -v ${HOME}:/root -e -device /dev/snd -v /dev/shm:/dev/shm:rw --net=host -e DISPLAY=:0 clearlinux
