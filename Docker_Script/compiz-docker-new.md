@@ -18,20 +18,22 @@ docker exec ubuntu bash /root/Downloads/NVIDIA-Linux-x86_64-545.23.06.run --acce
 Install compiz to run on the host.
 ``` docker exec ubuntu apt install compiz compizconfig-settings-manager compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main emerald emerald-themes -y
 ```
-# Start Compiz configuration manager and import profile, or set manually  
-docker exec ubuntu ccsm
+Start Compiz configuration manager and import profile, or set manually  
+```docker exec ubuntu ccsm
+```
+Start compiz
+```
+docker exec ubuntu emerald --replace
+docker exec ubuntu compiz --replace
+```
+Add to a startup script to automatically starte compiz at boot
+```#!/bin/bash
+docker start ubuntu &
+sleep 1s
+docker exec ubuntu emerald --replace &
+docker exec ubuntu compiz --replace &
+```
 
-# Start compiz
-# docker exec ubuntu emerald --replace
-# docker exec ubuntu compiz --replace
-
-# Add to a startup script to automatically starte compiz at boot
-#!/bin/bash
-#docker start ubuntu &
-#emerald --replace &
-#sleep 1s ; docker exec ubuntu compiz --replace &
-
-
-# Revert back to other window manager
-# in krunner type: kwin_x11 --replace
-# Docker ubuntu stop
+Revert back to other window manager
+in krunner type: ```kwin_x11 --replace```
+```Docker ubuntu stop```
