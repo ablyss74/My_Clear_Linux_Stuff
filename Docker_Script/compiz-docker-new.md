@@ -4,7 +4,7 @@ Define pulse-socket in pipewire-pulse.conf
 
 Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire/pipewire-pulse.conf 
 
-Change "something" and uncomment line 90  "unix:/tmp/pulse-socket" 
+Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
 
 estart pipewire-pulse with systemctl --user restart pipewire-pulse
 ```
