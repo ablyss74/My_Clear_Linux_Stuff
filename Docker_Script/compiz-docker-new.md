@@ -2,7 +2,7 @@ For pipewire sound from container apps to host we need to tell pipewire to creat
 
 Define pulse-socket in pipewire-pulse.conf 
 
-Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire
+Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire/pipewire-pulse.conf 
 
 Change "something" and uncomment line 90  "unix:/tmp/pulse-socket" 
 
