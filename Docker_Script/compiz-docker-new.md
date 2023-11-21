@@ -1,8 +1,12 @@
 For pipewire sound from container apps to host we need to tell pipewire to create a pulse socket.
+
 Define pulse-socket in pipewire-pulse.conf 
+
 Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire
+
 Change "something" and uncomment line 90  "unix:/tmp/pulse-socket" 
-Restart pipewire-pulse with systemctl --user restart pipewire-pulse
+
+estart pipewire-pulse with systemctl --user restart pipewire-pulse
 ```
 xhost +local:${USER} && docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket" 
 ```
