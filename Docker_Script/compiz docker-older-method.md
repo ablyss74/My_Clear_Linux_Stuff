@@ -1,4 +1,4 @@
-# The below is a little outdiate.  Please my new method in compiz-docker-new
+# The below is a little outdated.  Please my new method in compiz-docker-new
 
 ```code
 ### Install compiz Docker container and xfce desktop on Clear Linux for wobbly windows and other special effects.
