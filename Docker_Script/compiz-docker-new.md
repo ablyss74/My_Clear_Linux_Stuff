@@ -30,7 +30,7 @@ docker exec ubuntu apt update
 docker exec ubuntu apt upgrade -y
 ```
 
-If planning to use nvidia driver on the caontiner, we need kmod installed
+If planning to use nvidia driver on the container, we need kmod installed
 ```
 docker exec ubuntu apt install kmod -y
 ```
