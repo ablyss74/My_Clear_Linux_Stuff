@@ -74,4 +74,4 @@ docker exec ubuntu compiz --replace &
 In krunner type: ```kwin_x11 --replace```
 
 ### Last thing stop the container
-```Docker ubuntu stop```
+```docker ubuntu stop```
