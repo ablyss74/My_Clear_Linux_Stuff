@@ -43,7 +43,7 @@ Start compiz
 docker exec ubuntu emerald --replace
 docker exec ubuntu compiz --replace
 ```
-Add to a startup script to automatically starte compiz at boot
+Add to startup script to automatically start compiz at boot
 ```#!/bin/bash
 docker start ubuntu &
 sleep 1s
