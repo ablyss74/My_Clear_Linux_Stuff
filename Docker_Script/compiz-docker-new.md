@@ -53,5 +53,6 @@ docker exec ubuntu compiz --replace &
 
 Revert back to other window manager
 in krunner type: ```kwin_x11 --replace```
+
 Last thing stop the container
 ```Docker ubuntu stop```
