@@ -23,8 +23,7 @@ Create docker image. We will use ubuntu here and name the container ubuntu as we
 ```
 docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket" 
 ```
-Start the container
-Run basic update and upgrade 1st 
+Start the container, run basic update and upgrade
 ```
 docker start ubuntu
 docker exec ubuntu apt update
