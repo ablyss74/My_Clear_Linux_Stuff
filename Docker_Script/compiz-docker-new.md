@@ -1,5 +1,10 @@
 ## Run compiz off container ( ubuntu ) on Clear Linux and also pass pipewire from container for running apps like mpv or vlc
 
+Before we do anything we need to install the docker software and start it
+```swupd bundle-add containers-basic```
+```systemctl start docker.service```
+```systemctl enable docker.service```
+
 Define pulse-socket in pipewire-pulse.conf...
   
   For pipewire sound from container apps to host we need to tell pipewire to create a pulse socket.
