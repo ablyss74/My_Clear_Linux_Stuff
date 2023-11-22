@@ -1,4 +1,4 @@
-## Run compiz off container ( ubuntu ) on Clear Linux and also pass pipewire from container for running apps like mpv or vlc
+## Run compiz off container ( ubuntu ) on Clear Linux and also pass pipewire from container for running apps like mpv
 
 ### Before we do anything we need to install the docker software and start it
 
