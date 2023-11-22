@@ -36,9 +36,12 @@ Install compiz to run on the host.
 ``` docker exec ubuntu apt install compiz compizconfig-settings-manager compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main emerald emerald-themes -y
 ```
 Start Compiz configuration manager and import profile, or set manually  
-```docker exec ubuntu ccsm
 ```
-Start compiz
+docker exec ubuntu ccsm
+```
+Import compiz.profile or unless you know how to set your own default plugins 
+
+Then start compiz
 ```
 docker exec ubuntu emerald --replace
 docker exec ubuntu compiz --replace
