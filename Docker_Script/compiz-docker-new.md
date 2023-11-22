@@ -27,7 +27,8 @@
 ```
 docker start ubuntu
 docker exec ubuntu apt update
-docker exec ubuntu apt upgrade -y```
+docker exec ubuntu apt upgrade -y
+```
 
 - If planning to use nvidia driver on the caontiner, we need kmod installed
 ```
