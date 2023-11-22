@@ -16,7 +16,7 @@ systemctl enable docker.service
 
   Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
 
-  Restart pipewire-pulse with ```systemctl --user restart pipewire-pulse```
+  After install mpv inside the container, restart pipewire-pulse on the host with ```systemctl --user restart pipewire-pulse```
 
 
 ### Set xhost...
@@ -30,7 +30,7 @@ systemctl enable docker.service
 
 ### Create docker image. We will use ubuntu here and name the container ubuntu as well. 
 
-```docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket"```
+```docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket -e PULSE_SERVER=unix:/tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu```
 
 ### Start the container, run basic update and upgrade
 ```
