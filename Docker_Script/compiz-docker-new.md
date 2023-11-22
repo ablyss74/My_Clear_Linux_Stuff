@@ -1,6 +1,6 @@
 ## Run compiz off container ( ubuntu ) on Clear Linux and also pass pipewire from container for running apps like mpv or vlc
 
-Before we do anything we need to install the docker software and start it
+### Before we do anything we need to install the docker software and start it
 
 ```
 swupd bundle-add containers-basic
