@@ -11,7 +11,7 @@ Define pulse-socket in pipewire-pulse.conf...
 Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
 
 Restart pipewire-pulse with ```systemctl --user restart pipewire-pulse```
--
+---
 
 Set xhost...
 
