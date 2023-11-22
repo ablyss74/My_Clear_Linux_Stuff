@@ -29,11 +29,11 @@ docker start ubuntu
 docker exec ubuntu apt update
 docker exec ubuntu apt upgrade -y
 ```
-To install the nvidia kernel we need kmod and a Nvidia driver
+If planning to use nvidia driver on the caontiner, we need kmod installed
 ```
 docker exec ubuntu apt install kmod -y
 ```
-Download NVIDIA-Linux-x86_64-545.23.06.run to $HOME/Downalods or which ever driver you want and update the command below to match that. 
+Download the same version of the nivida driver that is used on the host machine to $HOME/Downalods update the version in the command below to match that. 
 ```
 docker exec ubuntu bash /root/Downloads/NVIDIA-Linux-x86_64-545.23.06.run --accept-license --ui=none --no-kernel-module --no-questions
 ```
