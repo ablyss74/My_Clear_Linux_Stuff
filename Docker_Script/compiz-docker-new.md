@@ -11,9 +11,13 @@ Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket"
 
 Restart pipewire-pulse with systemctl --user restart pipewire-pulse
 
-xhost +si:localuser:${USER} needs to be set for this to work. If you are on a true multi-user system, this is not ideal. Best for single user systems. 
-Best to have this start automatically
+
+Best to have this start automatically during boot or login startup script.
+If you are on a true multi-user system, this is not ideal. Best for single user systems. 
+
 ```xhost +si:localuser:${USER}```
+
+
 
 
 ```
