@@ -44,18 +44,17 @@ Install compiz to run on the host.
 docker exec ubuntu apt install compiz compizconfig-settings-manager compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main emerald emerald-themes -y
 
 ```
-Start Compiz configuration manager and import profile, or set manually  
+Start Compiz configuration manager and import [compiz.profile](compiz.profile) provided as a download in this repository or unless you know how to set your own default plugins 
 ```
 docker exec ubuntu ccsm
 ```
-Import [compiz.profile](compiz.profile) provided as a download in this repository or unless you know how to set your own default plugins 
 
-- Then start compiz
+Then start compiz
 ```
 docker exec ubuntu emerald --replace
 docker exec ubuntu compiz --replace
 ```
-- Add to startup script to automatically start compiz at boot
+Add to startup script to automatically start compiz at boot
 ```#!/bin/bash
 docker start ubuntu &
 sleep 1s
@@ -63,8 +62,8 @@ docker exec ubuntu emerald --replace &
 docker exec ubuntu compiz --replace &
 ```
 
-- Revert back to other window manager
+Revert back to other window manager
 in krunner type: ```kwin_x11 --replace```
 
-- Last thing stop the container
+Last thing stop the container
 ```Docker ubuntu stop```
