@@ -28,7 +28,7 @@ docker start ubuntu
 docker exec ubuntu apt update
 docker exec ubuntu apt upgrade -y
 ```
-For install the nvidia kernel we need kmod
+To install the nvidia kernel we need kmod
 ```docker exec ubuntu apt install kmod -y
 docker exec ubuntu bash /root/Downloads/NVIDIA-Linux-x86_64-545.23.06.run --accept-license --ui=none --no-kernel-module --no-questions
 ```
