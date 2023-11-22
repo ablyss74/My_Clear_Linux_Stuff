@@ -4,6 +4,8 @@
 # Masking the service I find helps speed up the boot procress.
 # change docker_id to match your container id. 
 
+# Ideal for single use applications, not ideal for daemons like compiz
+
 
 systemctl unmask docker.service
 systemctl unmask docker.socket
