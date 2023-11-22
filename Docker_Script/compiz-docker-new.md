@@ -11,7 +11,9 @@ Define pulse-socket in pipewire-pulse.conf...
 Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
 
 Restart pipewire-pulse with ```systemctl --user restart pipewire-pulse```
+-
 
+Set xhost...
 
 Best to have this start automatically during boot or login startup script.
 If you are on a true multi-user system, this may not be ideal. Best for single user systems. 
