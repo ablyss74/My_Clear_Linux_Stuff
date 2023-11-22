@@ -3,13 +3,14 @@
 
 For pipewire sound from container apps to host we need to tell pipewire to create a pulse socket.
 
-Define pulse-socket in pipewire-pulse.conf 
 
 Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire/pipewire-pulse.conf 
 
+Define pulse-socket in pipewire-pulse.conf... 
+
 Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
 
-Restart pipewire-pulse with systemctl --user restart pipewire-pulse
+Restart pipewire-pulse with ```systemctl --user restart pipewire-pulse```
 
 
 Best to have this start automatically during boot or login startup script.
