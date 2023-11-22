@@ -8,7 +8,7 @@ systemctl start docker.service
 systemctl enable docker.service
 ```
 
-Define pulse-socket in pipewire-pulse.conf...
+## Define pulse-socket in pipewire-pulse.conf...
   
   For pipewire sound from container apps to host we need to tell pipewire to create a pulse socket.
 
