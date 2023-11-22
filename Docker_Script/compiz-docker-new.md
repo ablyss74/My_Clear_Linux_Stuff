@@ -13,15 +13,15 @@ Restart pipewire-pulse with systemctl --user restart pipewire-pulse
 
 
 Best to have this start automatically during boot or login startup script.
-If you are on a true multi-user system, this is not ideal. Best for single user systems. 
+If you are on a true multi-user system, this may not be ideal. Best for single user systems. 
 
 ```xhost +si:localuser:${USER}```
 
 
 
-
+Create docker image. We will use ubuntu here and name the container ubuntu as well. 
 ```
-xhost +si:localuser:${USER} && docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket" 
+docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket" 
 ```
 ```
 docker start ubuntu
