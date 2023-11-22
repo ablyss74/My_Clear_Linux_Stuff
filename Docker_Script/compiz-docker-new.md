@@ -24,10 +24,12 @@
     ```docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket"```
 
 - Start the container, run basic update and upgrade
-    ```docker start ubuntu
-   docker exec ubuntu apt update
-    docker exec ubuntu apt upgrade -y```
-    If planning to use nvidia driver on the caontiner, we need kmod installed
+```
+docker start ubuntu
+docker exec ubuntu apt update
+docker exec ubuntu apt upgrade -y```
+
+- If planning to use nvidia driver on the caontiner, we need kmod installed
 ```
 docker exec ubuntu apt install kmod -y
 ```
