@@ -1,3 +1,6 @@
+## Run compiz off container ( ubuntu ) on Clear Linux and also pass pipewire from container for running apps like mpv or vlc
+
+
 For pipewire sound from container apps to host we need to tell pipewire to create a pulse socket.
 
 Define pulse-socket in pipewire-pulse.conf 
