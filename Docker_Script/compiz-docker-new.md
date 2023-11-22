@@ -47,7 +47,7 @@ Start Compiz configuration manager and import profile, or set manually
 ```
 docker exec ubuntu ccsm
 ```
-Import [compiz.profile]([https://raw.githubusercontent.com/ablyss74/My_Clear_Linux_Stuff/main/Docker_Script/compiz.profile]) provided as a download in this repository or unless you know how to set your own default plugins 
+Import [compiz.profile](url) provided as a download in this repository or unless you know how to set your own default plugins 
 
 Then start compiz
 ```
