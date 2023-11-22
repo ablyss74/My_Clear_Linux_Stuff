@@ -10,8 +10,14 @@ Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire/pipewire-pulse.con
 Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
 
 Restart pipewire-pulse with systemctl --user restart pipewire-pulse
+
+xhost +si:localuser:${USER} needs to be set for this to work. If you are on a true multi-user system, this is not ideal. Best for single user systems. 
+Best to have this start automatically
+```xhost +si:localuser:${USER}```
+
+
 ```
-xhost +local:${USER} && docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket" 
+xhost +si:localuser:${USER} && docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket" 
 ```
 ```
 docker start ubuntu
