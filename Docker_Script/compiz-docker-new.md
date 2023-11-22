@@ -4,29 +4,26 @@
   
   - For pipewire sound from container apps to host we need to tell pipewire to create a pulse socket.
 
-Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire/pipewire-pulse.conf 
+  - Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire/pipewire-pulse.conf 
 
-Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
+  - Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
 
-Restart pipewire-pulse with ```systemctl --user restart pipewire-pulse```
+  - Restart pipewire-pulse with ```systemctl --user restart pipewire-pulse```
 
 
 - Set xhost...
 
-Best to have this start automatically during boot or login startup script.
-If you are on a true multi-user system, this may not be ideal. Best for single user systems. 
+  - Best to have this start automatically during boot or login startup script.
+  - If you are on a true multi-user system, this may not be ideal. Best for single user systems. 
 
-```xhost +si:localuser:${USER}```
+  - ```xhost +si:localuser:${USER}```
 
 
 
-Create docker image. We will use ubuntu here and name the container ubuntu as well. 
-```
-docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket" 
-```
-Start the container, run basic update and upgrade
-```
-docker start ubuntu
+  - Create docker image. We will use ubuntu here and name the container ubuntu as well. 
+  - ```docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket"```
+  - Start the container, run basic update and upgrade
+  - ```docker start ubuntu
 docker exec ubuntu apt update
 docker exec ubuntu apt upgrade -y
 ```
