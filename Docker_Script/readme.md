@@ -1,5 +1,7 @@
 ### The below docker scripts are for running Ubuntu GUI apps from the container on the Clear Linux host via xhost forwarding. Apps like OBS can run from the container on Clear Linux with Nvidia driver support, and obsolete apps like Jamin can run with jackd/pulseaudio modules. 
 
+### A better method for installing Container apps is covered [here](compiz-docker-new.md) but the below still works, just a little harder.
+
 
  1. Add the docker container bundle with sudo swupd bundle-add containers-basic
  2. If planning on running jackd and qjackctl via containter, set Realtime mode to -1 on the Clear Linux host prior to running jackd and qjackctl with
