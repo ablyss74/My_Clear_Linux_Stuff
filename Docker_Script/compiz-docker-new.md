@@ -38,31 +38,31 @@ docker exec ubuntu apt update
 docker exec ubuntu apt upgrade -y
 ```
 
-If planning to use nvidia driver on the container, we need kmod installed
+### If planning to use nvidia driver on the container, we need kmod installed
 ```
 docker exec ubuntu apt install kmod -y
 ```
-Download the same version of the nivida driver that is used on the host machine to $HOME/Downalods update the version in the command below to match that. 
+### Download the same version of the nivida driver that is used on the host machine to $HOME/Downalods update the version in the command below to match that. 
 ```
 docker exec ubuntu bash /root/Downloads/NVIDIA-Linux-x86_64-545.23.06.run --accept-license --ui=none --no-kernel-module --no-questions
 ```
-Install compiz to run on the host.
+### Install compiz to run on the host.
 
 ```
 docker exec ubuntu apt install compiz compizconfig-settings-manager compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main emerald emerald-themes -y
 
 ```
-Start Compiz configuration manager and import [compiz.profile](compiz.profile) provided as a download in this repository or unless you know how to set your own default plugins 
+### Start Compiz configuration manager and import [compiz.profile](compiz.profile) provided as a download in this repository or unless you know how to set your own default plugins 
 ```
 docker exec ubuntu ccsm
 ```
 
-Then start compiz
+### Then start compiz
 ```
 docker exec ubuntu emerald --replace
 docker exec ubuntu compiz --replace
 ```
-Add to startup script to automatically start compiz at boot
+### Add to startup script to automatically start compiz at boot
 ```#!/bin/bash
 docker start ubuntu &
 sleep 1s
@@ -70,8 +70,8 @@ docker exec ubuntu emerald --replace &
 docker exec ubuntu compiz --replace &
 ```
 
-Revert back to other window manager
-in krunner type: ```kwin_x11 --replace```
+### Revert back to other window manager
+In krunner type: ```kwin_x11 --replace```
 
-Last thing stop the container
+### Last thing stop the container
 ```Docker ubuntu stop```
