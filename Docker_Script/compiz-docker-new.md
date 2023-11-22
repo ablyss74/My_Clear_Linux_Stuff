@@ -9,7 +9,7 @@ Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire/pipewire-pulse.con
 
 Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
 
-estart pipewire-pulse with systemctl --user restart pipewire-pulse
+Restart pipewire-pulse with systemctl --user restart pipewire-pulse
 ```
 xhost +local:${USER} && docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu unix:/tmp/pulse-socket" 
 ```
