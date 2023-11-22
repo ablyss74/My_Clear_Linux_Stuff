@@ -2,7 +2,7 @@
 
 - Define pulse-socket in pipewire-pulse.conf...
   
- - - For pipewire sound from container apps to host we need to tell pipewire to create a pulse socket.
+  - For pipewire sound from container apps to host we need to tell pipewire to create a pulse socket.
 
 Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire/pipewire-pulse.conf 
 
