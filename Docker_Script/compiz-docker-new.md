@@ -36,7 +36,7 @@ docker exec ubuntu apt install kmod -y
 ```
 docker exec ubuntu bash /root/Downloads/NVIDIA-Linux-x86_64-545.23.06.run --accept-license --ui=none --no-kernel-module --no-questions
 ```
-### Install compiz to run on the host.
+### Install compiz to passthru to the host.
 
 ```
 docker exec ubuntu apt install compiz compizconfig-settings-manager compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main emerald emerald-themes -y
