@@ -8,17 +8,6 @@ systemctl start docker.service
 systemctl enable docker.service
 ```
 
-### Define pulse-socket in pipewire-pulse.conf...
-  
-  For pipewire sound from container apps to host we need to tell pipewire to create a pulse socket.
-
-  Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire/pipewire-pulse.conf 
-
-  Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
-
-  After install mpv inside the container, restart pipewire-pulse on the host with ```systemctl --user restart pipewire-pulse```
-
-
 ### Set xhost...
 
   Best to have this start automatically during boot or login startup script.
@@ -65,6 +54,7 @@ docker exec ubuntu compiz --replace
 ```
 ### Add to startup script to automatically start compiz at boot
 ```#!/bin/bash
+xhost +si:localuser:${USER}
 docker start ubuntu &
 sleep 1s
 docker exec ubuntu emerald --replace &
@@ -76,3 +66,14 @@ In krunner type: ```kwin_x11 --replace```
 
 ### Last thing stop the container
 ```docker ubuntu stop```
+
+### Pass Pipewire Sound from container to host
+### Define pulse-socket in pipewire-pulse.conf...
+  
+  For pipewire sound from container apps to host we need to tell pipewire to create a pulse socket.
+
+  Copy /usr/share/pipewire/pipewire-pulse.conf to /etc/pipewire/pipewire-pulse.conf 
+
+  Uncomment line 90 and change "something" to "unix:/tmp/pulse-socket" 
+
+  After installing mpv inside the container, restart pipewire-pulse on the host with ```systemctl --user restart pipewire-pulse```
