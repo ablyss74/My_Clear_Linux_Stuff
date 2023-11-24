@@ -4,8 +4,8 @@
 
 ```
 swupd bundle-add containers-basic
-systemctl start docker.service
-systemctl enable docker.service
+systemctl start docker.service # start the service
+systemctl enable docker.service # enables startup at boot
 ```
 
 ### Set xhost...
