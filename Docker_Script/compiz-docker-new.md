@@ -36,7 +36,7 @@ docker exec ubuntu apt install kmod -y
 ```
 ### Download the same version of the nivida driver that is used on the host machine to $HOME/Downalods update the version in the command below to match that. 
 ```
-docker exec ubuntu bash /root/Downloads/NVIDIA-Linux-x86_64-545.23.06.run --accept-license --ui=none --no-kernel-module --no-questions
+docker exec ubuntu bash /root/Downloads/NVIDIA-Linux-x86_64-545.29.06.run --accept-license --ui=none --no-kernel-module --no-questions
 ```
 ### Install compiz to passthru to the host.
 
