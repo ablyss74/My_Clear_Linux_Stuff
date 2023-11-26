@@ -19,7 +19,8 @@ systemctl enable docker.service # enables startup at boot
 
 ### Create docker image. We will use ubuntu here and name the container ubuntu as well. 
 
-```docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 --device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket -e PULSE_SERVER=unix:/tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu```
+```docker run -itd --name ubuntu --privileged -v ${HOME}:/root -e JACK_NO_AUDIO_RESERVATION=1 \
+--device /dev/snd -v /dev/shm:/dev/shm:rw -v /tmp/pulse-socket -e PULSE_SERVER=unix:/tmp/pulse-socket --net=host -e DISPLAY=:0 ubuntu```
 
 ### Start the container, run basic update and upgrade
 ```
