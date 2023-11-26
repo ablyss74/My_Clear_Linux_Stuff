@@ -13,7 +13,9 @@ systemctl enable docker.service # enables startup at boot
   Best to have this start automatically during boot or login startup script.
   If you are on a true multi-user system, this may not be ideal. Best for single user systems. 
 
-   ```xhost +si:localuser:${USER}```
+```
+   xhost +si:localuser:${USER}
+```
 
 
 
