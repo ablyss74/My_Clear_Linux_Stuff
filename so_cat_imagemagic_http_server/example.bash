@@ -395,7 +395,7 @@ echo "</body></html>"
 #version2
 
 
-#version1() {
+version1() {
 ############################################################
 # 
 #   This example does not give the client a unique ID
