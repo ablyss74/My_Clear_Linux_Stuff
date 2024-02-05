@@ -97,7 +97,7 @@ source $tmpfile
 cd $working_dir
 
 [[ ${desktop,,} == no ]] && bundles="[os-core, os-core-update, openssh-server, vim-minimal]"
-[[ ${desktop,,} == yes ]] && bundles="[os-core, os-core-update, openssh-server, vim-minimal, flatpak"
+[[ ${desktop,,} == yes ]] && bundles="[os-core, os-core-update, openssh-server, vim-minimal, flatpak]"
 
 echo "Try unmount spare drive and loops:..."
 losetup -vD
