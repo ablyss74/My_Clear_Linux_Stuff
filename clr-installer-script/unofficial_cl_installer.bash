@@ -13,53 +13,53 @@ fone() { echoReply="Some information is needed to input to the installer.
 login name for new install:"
 }
  
-	if [[ ! $REPLY && ! $default_spare_drive ]] then
+	if [[ ! $REPLY && ! $default_spare_drive ]]; then
    		fone	
 	fi
-	if [[ ! $REPLY && -e $tmpfile ]] then 
+	if [[ ! $REPLY && -e $tmpfile ]]; then 
 		echoReply="Setup file found. \`Restart/Install/Quit\`:"
 	fi	
-	if [[ $REPLY && ! -e $tmpfile ]] then
+	if [[ $REPLY && ! -e $tmpfile ]]; then
 		fone
 		echo > $tmpfile
 	fi
 	if [[ $REPLY ]];then
 		source $tmpfile
-  		if [[ $desktop && $default_spare_drive ]] then
+  		if [[ $desktop && $default_spare_drive ]]; then
 		    echoReply="If everything looks good type \`install\` else type \`quit\` or \`restart\`:" 
 		fi
-		if [[ $desktop && -z $default_spare_drive ]] then
+		if [[ $desktop && -z $default_spare_drive ]]; then
 		    echo "default_spare_drive=${REPLY}" >> $tmpfile
 		    echoReply="If everything looks good type \`install\` else type \`quit\` or \`restart\`:" 
 		fi
-	 	if [[ $swapFileSize && -z $desktop ]] then
+	 	if [[ $swapFileSize && -z $desktop ]]; then
 	 	   echo "desktop=${REPLY}" >> $tmpfile
 	 	   lsblk
 	 	   echoReply="Path to spare drive **The entire drive will be erased***\\n\\nInstead of installing to a spare drive type \`skip\` and the installation will stop after the ISO is created\\n\\nso you can test in a virtual machine e.g., /dev/sda, /dev/sdb etc or skip:" 
 	 	fi
-	        if [[ $timezone && -z $swapFileSize ]] then
+	        if [[ $timezone && -z $swapFileSize ]]; then
 		   echo "swapFileSize=${REPLY}" >> $tmpfile	
 		   echoReply="Add XFCE4 Desktop?: yes/no"
 	        fi
-	 	if [[ $filesystemtype && -z $timezone ]] then
+	 	if [[ $filesystemtype && -z $timezone ]]; then
 	 	   echo "timezone=${REPLY}" >> $tmpfile
 	 	   echoReply="Swapfile size >= 64:"
 	 	fi			
-	 	if [[ $username && -z $filesystemtype ]] then
+	 	if [[ $username && -z $filesystemtype ]]; then
 	 	   echo "filesystemtype=${REPLY}" >> $tmpfile
 		   timezone=($(timedatectl))
 		   echoReply="Timezone case-sEeNsItIvE, currently set as ${timezone[19]}:"
 	 	fi
-		if [[ $login && -z $username ]] then
+		if [[ $login && -z $username ]]; then
 		   echo "username=${REPLY}" >> $tmpfile
 		   echoReply="File System Type \"ext[2,3,4]/xfs/f2fs\":"
 		fi
-		if [[ -z $login ]] then
+		if [[ -z $login ]]; then
 		    echo "login=${REPLY}" >> $tmpfile
 		    echo "password=foobar0000" >> $tmpfile
 		    echoReply="username for new install:"
 		fi
-		if [[ ${REPLY,,} == restart ]] then
+		if [[ ${REPLY,,} == restart ]]; then
 		   rm $tmpfile
 		   fone
 		   echo > $tmpfile
@@ -82,10 +82,10 @@ footer
 
 while true
 	do
-		 if [[ ${REPLY,,} == quit ]];then
+		 if [[ ${REPLY,,} == quit ]]; then
 			 echo -e "\\n\\nbye!\\n\\n"
 		      break	
-		 elif [[ ${REPLY,,} == install ]];then
+		 elif [[ ${REPLY,,} == install ]]; then
 			 echo -e "\\n\\nInstalling...\\n\\n"
 
 
@@ -170,7 +170,7 @@ done
 
 
 
-if [[ ${filesystemtype,,} == xfs ]] then
+if [[ ${filesystemtype,,} == xfs ]]; then
 echo "xfs_repair post setup:..."
 mount -v /dev/loop0p2 
 sleep 3s
@@ -180,7 +180,7 @@ echo "Trying xfs_repair:..."
 xfs_repair /dev/loop0p2
 fi
 
-if [[ ${filesystemtype,,} == ext4 ]] || [[ ${filesystemtype,,} == ext3 ]] || [[ ${filesystemtype,,} == ext2 ]] then
+if [[ ${filesystemtype,,} == ext4 ]] || [[ ${filesystemtype,,} == ext3 ]] || [[ ${filesystemtype,,} == ext2 ]]; then
 echo "ext4_repair post setup:..."
 mount -v /dev/loop0p2
 sleep 3s
@@ -190,7 +190,7 @@ echo "Trying ext4_repair:..."
 e2fsck -f -y -v -C 0 /dev/loop0p2
 fi
 
-if [[ ${filesystemtype,,} == f2fs ]] then
+if [[ ${filesystemtype,,} == f2fs ]]; then
 echo "ext4_repair post setup:..."
 mount -v /dev/loop0p2
 sleep 3s
@@ -212,12 +212,12 @@ echo "FYI, check updates regularly with flatpak update -y." >> /mnt/home/${login
 umount -v /mnt
 
 
-if [[ ${default_spare_drive,,} != skip ]] then 
+if [[ ${default_spare_drive,,} != skip ]]; then 
 echo "Writing image file to default_spare_drive:..."
 dd if=./clearlinux.img of=${default_spare_drive} oflag=sync bs=4M status=progress
 
 
-if [[ ${filesystemtype,,} == xfs ]] then
+if [[ ${filesystemtype,,} == xfs ]]; then
 echo "xfs_repair post setup:..."
 mount -v ${default_spare_drive}2 
 sleep 3s
@@ -227,7 +227,7 @@ echo "Trying xfs_repair:..."
 xfs_repair ${default_spare_drive}2
 fi
 
-if [[ ${filesystemtype,,} == ext4 ]] || [[ ${filesystemtype,,} == ext3 ]] || [[ ${filesystemtype,,} == ext2 ]] then
+if [[ ${filesystemtype,,} == ext4 ]] || [[ ${filesystemtype,,} == ext3 ]] || [[ ${filesystemtype,,} == ext2 ]]; then
 echo "ext4_repair post setup:..."
 mount -v ${default_spare_drive}2 
 sleep 3s
@@ -237,7 +237,7 @@ echo "Trying ext4_repair:..."
 e2fsck -f -y -v -C 0 ${default_spare_drive}2
 fi
 
-if [[ ${filesystemtype,,} == f2fs ]] then
+if [[ ${filesystemtype,,} == f2fs ]]; then
 echo "ext4_repair post setup:..."
 mount -v ${default_spare_drive}2 
 sleep 3s
