@@ -76,7 +76,7 @@ for l in "$(amixer get Master)"
 	https://ice6.somafm.com/u80s-128-mp3#Underground 80s - Early 80s UK Synthpop and a bit of New Wave.
 	https://ice4.somafm.com/reggae-128-mp3#Heavyweight Reggae - Reggae, Ska, Rocksteady classic and deep tracks.
 	https://ice6.somafm.com/scanner-128-mp3#SF Police Scanner - San Francisco Public Safety Scanner Feed.
-	https://ice6.somafm.com/specials-128-mp3#Secret Agent - The soundtrack for your stylish, mysterious, dangerous life. For Spies and PIs too!
+	https://ice2.somafm.com/secretagent-128-mp3#Secret Agent - The soundtrack for your stylish, mysterious, dangerous life. For Spies and PIs too!
 	https://ice6.somafm.com/seventies-128-mp3#Left Coast 70s - Mellow album rock from the Seventies. Yacht not required.
 	https://ice4.somafm.com/sf1033-128-mp3#SF 10-33 - Ambient music mixed with the sounds of San Francisco public safety radio traffic.
 	https://ice6.somafm.com/sonicuniverse-128-mp3#Sonic Universe - Transcending the world of jazz with eclectic, avant-garde takes on tradition.
