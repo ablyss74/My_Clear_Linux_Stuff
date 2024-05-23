@@ -89,13 +89,16 @@ for l in "$(amixer get Master)"
 	https://ice1.somafm.com/vaporwaves-128-mp3#Vaporwaves - All Vaporwave. All the time."
 	mapfile playlist <<< $playlist
 
-# Add option to play and stop 1 playlist argument given to command line. 
+# Added option to pass argument given to command line. 
+# Arguments accepted are quit, shuffle, favorites, or custom stream URL
 # Works good for things like KDE-connect
 # Examples "music_thingy.bash https://ice2.somafm.com/secretagent-128-mp3" "music_thingy.bash quit"
 if [[ $1 ]];then
 
         [[ ${1,,} == quit ]] && xcleanup_thingy && exit
-        [[ ${1,,} != quit ]] && playlist="$1" && mapfile playlist <<< $playlist
+        [[ ${1,,} == shuffle ]] && xcleanup_thingy && REPLY=s
+        [[ ${1,,} == favorites ]] && xcleanup_thingy && REPLY=f
+        [[ ${1,,} != quit && ${1,,} != shuffle && ${1,,} != favorites ]] && xcleanup_thingy && playlist="$1" && mapfile playlist <<< $playlist
 fi
 	
 startplaying(){
