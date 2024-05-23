@@ -89,10 +89,11 @@ for l in "$(amixer get Master)"
 	https://ice1.somafm.com/vaporwaves-128-mp3#Vaporwaves - All Vaporwave. All the time."
 	mapfile playlist <<< $playlist
 
-# Add option to play argument given to command line. 
+# Add option to play and stop 1 playlist argument given to command line. 
 if [[ $1 ]];then
-	playlist="$1"
-	mapfile playlist <<< $playlist
+
+        [[ ${1,,} == quit ]] && xcleanup_thingy && exit
+        [[ ${1,,} != quit ]] && playlist="$1" && mapfile playlist <<< $playlist
 fi
 	
 startplaying(){
