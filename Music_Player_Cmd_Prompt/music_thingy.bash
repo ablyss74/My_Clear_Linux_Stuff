@@ -91,6 +91,7 @@ for l in "$(amixer get Master)"
 
 # Add option to play and stop 1 playlist argument given to command line. 
 # Works good for things like KDE-connect
+# Examples "music_thingy.bash https://ice2.somafm.com/secretagent-128-mp3" "music_thingy.bash quit"
 if [[ $1 ]];then
 
         [[ ${1,,} == quit ]] && xcleanup_thingy && exit
