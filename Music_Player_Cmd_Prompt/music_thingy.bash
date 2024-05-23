@@ -93,7 +93,6 @@ for l in "$(amixer get Master)"
 if [[ $1 ]];then
 	playlist="$1"
 	mapfile playlist <<< $playlist
-	unset $1
 fi
 	
 startplaying(){
