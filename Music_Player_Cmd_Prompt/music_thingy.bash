@@ -88,7 +88,13 @@ for l in "$(amixer get Master)"
 	https://ice6.somafm.com/thistle-128-mp3#ThistleRadio - Exploring music from Celtic roots and branches
 	https://ice1.somafm.com/vaporwaves-128-mp3#Vaporwaves - All Vaporwave. All the time."
 	mapfile playlist <<< $playlist
-	
+
+# Add option to play argument given to command line. 
+if [[ $1 ]];then
+	playlist="$1"
+	mapfile playlist <<< $playlist
+	unset $1
+fi
 	
 startplaying(){
 header(){
