@@ -90,6 +90,7 @@ for l in "$(amixer get Master)"
 	mapfile playlist <<< $playlist
 
 # Add option to play and stop 1 playlist argument given to command line. 
+# Works good for things like KDE-connect
 if [[ $1 ]];then
 
         [[ ${1,,} == quit ]] && xcleanup_thingy && exit
