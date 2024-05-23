@@ -92,7 +92,7 @@ for l in "$(amixer get Master)"
 # Added option to pass argument given to command line. 
 # Arguments accepted are quit, shuffle, favorites, or custom stream URL
 # Works good for things like KDE-connect
-# Examples "music_thingy.bash https://ice2.somafm.com/secretagent-128-mp3" "music_thingy.bash quit"
+# Examples "music_thingy.bash https://ice2.somafm.com/secretagent-128-mp3" "music_thingy.bash quit"  "music_thingy.bash shuffle"  "music_thingy.bash favorites"
 if [[ $1 ]];then
 
         [[ ${1,,} == quit ]] && xcleanup_thingy && exit
