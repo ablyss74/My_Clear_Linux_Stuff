@@ -11,11 +11,13 @@
 set -f
 
 xcleanup_thingy(){ 
+echo
 [[ -e /tmp/bash_music_thingy.pid ]] && kill -1 $(</tmp/bash_music_thingy.pid) && rm /tmp/bash_music_thingy.pid
 [[ -e /tmp/music_thingy.pid ]] && kill -1 $(</tmp/music_thingy.pid) && rm /tmp/music_thingy.pid
+
 }
 
-cleanup_thingy(){		
+cleanup_thingy(){
 mapfile pids <<< $pids	
 	if [[ ${#pids[*]} -gt 1 ]];then
 		pid0="${pids[0]}"
@@ -125,12 +127,11 @@ if [[ $1 ]];then
 	pl="${playlist[$shuffle]}"
 	tr=(${pl//\\n/\/ })
 	tr=${tr[0]}
-        mapfile playlist <<< $tr 
+        mapfile playlist <<< $tr     
         fi       
         
         if [[ ${1,,} == quit ]]; then        
         xcleanup_thingy
-        echo $BASHPID > /tmp/bash_music_thingy.pid
 	exit 0
         fi   
 
@@ -249,14 +250,20 @@ echo -e "${BLUE}                   Interactive Music Thingy               \n    
         
 tput rmso
 
+
 [[ ! -p /tmp/music_thingy.pipe ]] && mkfifo /tmp/music_thingy.pipe
 
+
+[[ -e /tmp/bash_music_thingy.pid ]] && rm /tmp/bash_music_thingy.pid && kill -1 $$
 startplaying	
 
+
+cleanup_thingy
 }
 
 while true
 	do
+		
 		 player="mpg123"		 
 		 BLUE="$(tput setaf 12)"    
 		 RED="$(tput setaf 9)"
@@ -277,5 +284,6 @@ while true
 		      break		 
 		  else
 		  	read -s -r -p "$(header)" -n 1	
+		  	
 		 fi	 
 	done
