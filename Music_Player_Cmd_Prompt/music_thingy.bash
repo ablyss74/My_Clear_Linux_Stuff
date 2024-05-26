@@ -11,6 +11,7 @@
 set -f
 
 xcleanup_thingy(){ 
+[[ -e /tmp/bash_music_thingy.pid ]] && kill -1 $(</tmp/bash_music_thingy.pid) && rm /tmp/bash_music_thingy.pid
 [[ -e /tmp/music_thingy.pid ]] && kill -1 $(</tmp/music_thingy.pid) && rm /tmp/music_thingy.pid
 }
 
@@ -88,17 +89,52 @@ for l in "$(amixer get Master)"
 	https://ice6.somafm.com/thistle-128-mp3#ThistleRadio - Exploring music from Celtic roots and branches
 	https://ice1.somafm.com/vaporwaves-128-mp3#Vaporwaves - All Vaporwave. All the time."
 	mapfile playlist <<< $playlist
-
+	
 # Added option to pass argument given to command line. 
 # Arguments accepted are quit, shuffle, favorites, or custom stream URL
 # Works good for things like KDE-connect
 # Examples "music_thingy.bash https://ice2.somafm.com/secretagent-128-mp3" "music_thingy.bash quit"  "music_thingy.bash shuffle"  "music_thingy.bash favorites"
 if [[ $1 ]];then
+        if [[ ${1,,} != quit && ${1,,} != shuffle && ${1,,} !=  favorites ]]; then         
+        xcleanup_thingy
+        echo $BASHPID > /tmp/bash_music_thingy.pid
+        playlist="$1" 
+        mapfile playlist <<< $playlist 
+        fi
+        
+        if [[ ${1,,} == favorites ]]; then         
+        xcleanup_thingy 
+        echo $BASHPID > /tmp/bash_music_thingy.pid
+        REPLY=f
+      	mapfile playlist < $favs
+	nu="0-$((${#playlist[*]}-1))"
+	shuffle="$(shuf -i $nu -n 1)"
+	pl="${playlist[$shuffle]}"
+	tr=(${pl//\\n/\/ })
+	tr=${tr[0]}
+        mapfile playlist <<< $tr 
+        fi 
+        
+        if [[ ${1,,} == shuffle ]]; then         
+        xcleanup_thingy
+        echo $BASHPID > /tmp/bash_music_thingy.pid
+        REPLY=s
+        mapfile playlist < $favs
+	nu="0-$((${#playlist[*]}-1))"
+	shuffle="$(shuf -i $nu -n 1)"
+	pl="${playlist[$shuffle]}"
+	tr=(${pl//\\n/\/ })
+	tr=${tr[0]}
+        mapfile playlist <<< $tr 
+        fi       
+        
+        if [[ ${1,,} == quit ]]; then        
+        xcleanup_thingy
+        echo $BASHPID > /tmp/bash_music_thingy.pid
+	exit 0
+        fi   
 
-        [[ ${1,,} == quit ]] && xcleanup_thingy && exit
-        [[ ${1,,} == shuffle ]] && xcleanup_thingy && REPLY=s
-        [[ ${1,,} == favorites ]] && xcleanup_thingy && REPLY=f
-        [[ ${1,,} != quit && ${1,,} != shuffle && ${1,,} != favorites ]] && xcleanup_thingy && playlist="$1" && mapfile playlist <<< $playlist
+
 fi
 	
 startplaying(){
@@ -163,6 +199,7 @@ if [[ ${REPLY} == h ]];then
 	footer
  return					
 fi
+
 
 if [[ $REPLY == f ]];then	
 	mapfile playlist < $favs
@@ -242,4 +279,3 @@ while true
 		  	read -s -r -p "$(header)" -n 1	
 		 fi	 
 	done
-
