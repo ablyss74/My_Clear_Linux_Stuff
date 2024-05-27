@@ -121,8 +121,7 @@ if [[ $1 ]];then
         xcleanup_thingy
         echo $BASHPID > /tmp/bash_music_thingy.pid
         REPLY=s
-        mapfile playlist < $favs
-	nu="0-$((${#playlist[*]}-1))"
+        nu="0-$((${#playlist[*]}-1))"
 	shuffle="$(shuf -i $nu -n 1)"
 	pl="${playlist[$shuffle]}"
 	tr=(${pl//\\n/\/ })
@@ -258,7 +257,7 @@ tput rmso
 startplaying	
 
 
-cleanup_thingy
+
 }
 
 while true
