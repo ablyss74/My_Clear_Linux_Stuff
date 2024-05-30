@@ -1,5 +1,6 @@
-
-# Building Enlightenment, efl, and terminology on Clear Linux
+# Currently EFL won't build with the latest Clear Linux because Lua is outdated in the EFL source code.
+#-------------
+## Building Enlightenment, efl, and terminology on Clear Linux
 If wanting to test wayland there are official steps online just not covered here. Besure to read the caution about using wayland with Nvidia drivers,
 
 This will build enlightenment, efl, and terminology on Clear Linux w/ X11 and no support for testing wayland
